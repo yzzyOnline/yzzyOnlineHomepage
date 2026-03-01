@@ -421,6 +421,20 @@ nav {
 .grn2{color:var(--green)}
 .num{color:#f78c6c}
 
+/* ── CASCADE SECTION ── */
+.cascade-section {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.cascade-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  max-width: 1100px;
+}
+
 /* ── GAMES SECTION ── */
 .games-grid {
   display: grid;
@@ -776,7 +790,7 @@ footer {
   nav { padding: 0 24px; }
   .hero { padding: 90px 24px 60px; }
   .section { padding: 72px 24px; }
-  .nc-grid, .demo-inner { grid-template-columns: 1fr; gap: 48px; }
+  .nc-grid, .cascade-grid, .demo-inner { grid-template-columns: 1fr; gap: 48px; }
   footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
 
   /* hide desktop nav, show hamburger */
@@ -795,6 +809,7 @@ footer {
   <a class="logo" href="/">YZZY.ONLINE</a>
   <ul class="nav-links">
     <li><a href="https://netclient.yzzy.online">NETCLIENT</a></li>
+    <li><a href="https://cascade.yzzy.online">CASCADE</a></li>
     <li><a href="#games">GAMES</a></li>
     <li><a href="#demo">DEMO</a></li>
     <li><a href="https://github.com/yzzyonline" target="_blank">GITHUB</a></li>
@@ -809,6 +824,7 @@ footer {
 <!-- MOBILE MENU DRAWER -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="https://netclient.yzzy.online">NETCLIENT</a>
+  <a href="https://cascade.yzzy.online">CASCADE</a>
   <a href="#games" id="mobileGames">GAMES</a>
   <a href="#demo" id="mobileDemo">DEMO</a>
   <a href="https://github.com/yzzyonline" target="_blank">GITHUB</a>
@@ -887,6 +903,56 @@ net.<span class="fn">on</span>(<span class="str">"roomCreated"</span>, (roomId) 
 net.<span class="fn">on</span>(<span class="str">"relay"</span>, (fromId, data) => {
   <span class="fn">updatePlayer</span>(fromId, data);
 });</div>
+    </div>
+  </div>
+</section>
+
+<!-- CASCADE -->
+<section class="section cascade-section" id="cascade">
+  <div class="cascade-grid reveal">
+    <div>
+      <span class="label">// OPEN SOURCE</span>
+      <h2 class="sec-title">Cascade</h2>
+      <p class="sec-desc">
+        Self-hosted AI middleware that routes prompts across free providers — Gemini, Groq, Mistral, and Cerebras. One endpoint, automatic fallback, always an answer.
+      </p>
+      <ul class="nc-features">
+        <li><span class="arr">→</span> Difficulty float maps to a model tier automatically</li>
+        <li><span class="arr">→</span> Climbs to smarter models on complexity, falls back on failure</li>
+        <li><span class="arr">→</span> Key rotation — pipe-separate multiple keys per provider</li>
+        <li><span class="arr">→</span> Origin whitelist, rate limiting, and per-request timeout</li>
+        <li><span class="arr">→</span> Deploy free to Render in minutes</li>
+      </ul>
+      <div class="nc-actions">
+        <a href="https://cascade.yzzy.online" target="_blank" class="btn btn-green">READ DOCS</a>
+        <a href="https://cascade.yzzy.online/demo/" target="_blank" class="btn btn-outline">LIVE DEMO</a>
+      </div>
+    </div>
+
+    <div class="code-win">
+      <div class="code-bar">
+        <div class="dot dr"></div>
+        <div class="dot dy"></div>
+        <div class="dot dg"></div>
+        <span class="code-fname">app.js</span>
+      </div>
+      <div class="code-body"><span class="kw">const</span> res = <span class="kw">await</span> <span class="fn">fetch</span>(
+  <span class="str">"https://your-cascade.onrender.com/ask-ai"</span>,
+  {
+    method: <span class="str">"POST"</span>,
+    headers: { <span class="str">"Content-Type"</span>: <span class="str">"application/json"</span> },
+    body: <span class="fn">JSON.stringify</span>({
+      secret: <span class="str">"your-secret"</span>,
+      difficulty: <span class="num">0.5</span>, <span class="cm">// 0.0 cheap → 1.0 capable</span>
+      prompt: <span class="str">"Your prompt here."</span>
+    })
+  }
+);
+
+<span class="kw">const</span> data = <span class="kw">await</span> res.<span class="fn">json</span>();
+<span class="kw">const</span> reply = data.package.package.reply;
+
+console.<span class="fn">log</span>(<span class="str">"Answered by:"</span>, data.answeredBy.model);</div>
     </div>
   </div>
 </section>
@@ -992,6 +1058,7 @@ net.<span class="fn">on</span>(<span class="str">"relay"</span>, (fromId, data) 
   <a class="footer-logo" href="/">YZZY.ONLINE</a>
   <ul class="footer-links">
     <li><a href="https://netclient.yzzy.online" target="_blank">NETCLIENT</a></li>
+    <li><a href="https://cascade.yzzy.online" target="_blank">CASCADE</a></li>
     <li><a href="https://netclient.yzzy.online/demo" target="_blank">DEMO</a></li>
     <li><a href="https://github.com/yzzyonline" target="_blank">GITHUB</a></li>
   </ul>
